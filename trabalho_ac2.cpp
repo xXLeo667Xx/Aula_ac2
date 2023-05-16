@@ -1,30 +1,37 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
+
 int main() {
-    //variaveis com salas decom seis numeros, que são os alunos
-    int salas[6] = {35, 4, 22, 20, 36, 30};
+    int Salas;
+    //interface de usuario para digitar o numero de salas
+    cout << "Digite a quantidade de salas: ";
+    cin >> Salas;
+
+//'vector<int>'armazena variaveis do tipo 'int' como as salas, criamos uma variavel alunosPorSala e varievel alunos
+    vector<int> alunosPorSala(Salas);
     int Alunos = 0;
 
-//percorrer cada numeros de alunos para mostrar e analisar o valor total
-    for (int i = 0; i < 6; i++) {
-        Alunos += salas[i];
+//for para percorer todos os valores da varivel e calcular e comparar 
+    for (int i = 0; i < Salas; i++) {
+        //interface de usuario colocar o numero de alunos na salas
+        cout << "Digite a quantidade de alunos na sala " << (i + 1) << ": ";
+        cin >> alunosPorSala[i];
+        Alunos += alunosPorSala[i];
     }
 
-//calculo da media da sala, dividindo o numeros de alunos em 6 calculando uma media
-    float media = static_cast<float>(Alunos) / 6;
+//calculo da media da salas, depois uma interface que mostrara a media de alunos por sala
+    double mediaAlunos = static_cast<double>(Alunos) / Salas;
+    cout << "A média de alunos por sala é: " << mediaAlunos << endl;
 
-//interface de usuario sobre a media da salas
-    cout << "A média de alunos por sala é: " << media << endl;
-
-//interface que mostrara todas as salas que estão acima da media da sala
-    cout << "Salas acima da média: ";
-    for (int i = 0; i < 6; i++) {
-        if (salas[i] > media) {
-            cout << i + 1 << " ";
+//interface que mostrara as salas que estão acima da media
+    cout << "Salas com número de alunos acima da média:" << endl;
+    for (int i = 0; i < Salas; i++) {
+        if (alunosPorSala[i] > mediaAlunos) {
+            cout << "Sala " << (i + 1) << ": " << alunosPorSala[i] << " alunos" << endl;
         }
     }
-    cout << endl;
 
     return 0;
 }
